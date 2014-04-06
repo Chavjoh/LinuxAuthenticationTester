@@ -5,14 +5,14 @@ Test windows authentication of a user with multiple password given in a dictiona
 
 ## Requirements
 
-* Python 3.3
-* Python Pam 0.4.2
+* Python >= 2.7.3
+* Python Pam >= 0.4.2
 
 ## Tests
 
-Tested on Ubuntu 12.04 LTS with Python Pam 0.4.2-12.2ubuntu4
+Tested on Ubuntu 12.04 LTS with Python 2.7.3 and Python Pam 0.4.2-12.2ubuntu4
 
-**Warning** : This version of Pythom Pam have a security issue : supplying a password containing a NULL-byte to the PyPAM module trigger a double-free condition. It may allow remote code execution. Please use a newer version.
+**Warning** : This version of Python Pam have a security issue : supplying a password containing a NULL-byte to the module trigger a double-free condition. It may allow remote code execution. Please use a newer version.
 
 ## Tester with PAM module
 
