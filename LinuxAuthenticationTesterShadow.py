@@ -63,7 +63,7 @@ def checkAuthentication(shadowPwdDb, password):
 def bruteForce(username, dictionary):
 	"""
 	Authentication test for each password in the dictionary
-	with the given user name and domain
+	with the given user name on the current computer
 	
 	:param username: Username used to test each password in given dictionary
 	:type username: str
