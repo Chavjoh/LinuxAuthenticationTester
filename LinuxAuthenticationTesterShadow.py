@@ -1,5 +1,5 @@
-#!/usr/bin/python
-# coding: latin-1
+﻿#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #------------------------------------------------------------------------------#
 # Security - Linux Authentication Tester with /etc/shadow                      #
@@ -45,38 +45,33 @@ import argparse
 #                                                                              #
 #------------------------------------------------------------------------------#
 
-def checkAuthentication(user, password):
+def checkAuthentication(shadowPwdDb, password):
 	"""
 	Test authentication in linux
 	
-	:param username: Account username to test
-	:type username: str
+	:param shadowPwdDb: Shadow password database entry for the user
+	:type shadowPwdDb: spwd
 	:param password: Account password to test
 	:type password: str
 	"""
-	try:
-		# Return the shadow password database entry for the given user name
-		shadowPasswordDatabase = spwd.getspnam(user)[1]
-		
-		if crypt.crypt(password, shadowPasswordDatabase) == shadowPasswordDatabase:
-			return True
-		else:
-			return False
-			
-	except KeyError:
-		print("user '%s' not found" % user)
-		sys.exit()
+	
+	if crypt.crypt(password, shadowPwdDb) == shadowPwdDb:
+		return True
+	else:
+		return False
 
 def bruteForce(username, dictionary):
 	"""
 	Authentication test for each password in the dictionary
 	with the given user name and domain
 	
-	:param username: Username used to test each password in given dictionary file
+	:param username: Username used to test each password in given dictionary
 	:type username: str
 	:param dictionary: Dictionary file path that contains all password
 	:type dictionary: str
 	"""
+	# Return the shadow password database entry for the given user name
+	shadowPwdDb = spwd.getspnam(username)[1]
 	
 	# Open dictionary file
 	with open(dictionary) as file:
@@ -85,7 +80,7 @@ def bruteForce(username, dictionary):
 			# Delete new line character
 			password = line.rstrip('\n')
 			# Check authentication
-			if checkAuthentication(username, password):
+			if checkAuthentication(shadowPwdDb, password):
 				return password
 				
 	return False
@@ -135,3 +130,6 @@ if __name__ == '__main__':
 	
 	except (OSError, IOError) as e:
 		print("Dictionary not found")
+		
+	except KeyError:
+		print("User '%s' not found" % username)
