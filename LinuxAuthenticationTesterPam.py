@@ -1,5 +1,5 @@
-# !/usr/bin/python
-# coding: latin-1
+﻿#!/usr/bin/python
+# -*- coding: utf-8 -*-
 
 #------------------------------------------------------------------------------#
 # Security - Linux Authentication Tester with PAM module                       #
