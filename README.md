@@ -28,6 +28,10 @@ Arguments :
 Benchmark :
 * It takes more than **1 hour** to test a dictionary with 3905 passwords. 
 
+Analysis : 
+
+* The benchmark is terribly long because of the presence of a fail delay setting. If you have root access, you can change this setting in **/etc/pam.d/common-auth**. Otherwise, you can make a work-around that know that the password is false if the response is not arrived after 0.5 seconds (this value need to be adjusted), for example.
+
 ## Tester with /etc/shadow
 
 Launch the script with :
