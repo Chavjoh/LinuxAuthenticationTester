@@ -12,7 +12,7 @@ Test windows authentication of a user with multiple password given in a dictiona
 
 Tested on Ubuntu 12.04 LTS with Python 2.7.3 and Python Pam 0.4.2-12.2ubuntu4
 
-**Warning** : This version of Python Pam have a security issue : supplying a password containing a NULL-byte to the module trigger a double-free condition. It may allow remote code execution. Please use a newer version.
+**Warning** : Python Pam 0.4.2 have a security issue : supplying a password containing a NULL-byte to the module trigger a double-free condition. It may allow remote code execution. Be careful to use a version that patch this issue.
 
 ## Tester with PAM module
 
@@ -29,8 +29,10 @@ Benchmark :
 * It takes more than **1 hour** to test a dictionary with 3905 passwords. 
 
 Analysis : 
+* The benchmark is terribly long because of the presence of a fail delay setting. If you have root access, you can change this setting in **/etc/pam.d/common-auth**. Otherwise, you can make a work-around that know that the password is false if the response is not arrived after 0.5 seconds (this value need to be adjusted for better performance), for example.
 
-* The benchmark is terribly long because of the presence of a fail delay setting. If you have root access, you can change this setting in **/etc/pam.d/common-auth**. Otherwise, you can make a work-around that know that the password is false if the response is not arrived after 0.5 seconds (this value need to be adjusted), for example.
+Improvement idea :
+* Whenever the password is correct or not, PAM should wait a random time (for example between 0.3 and 0.6 seconds) to respond. In this case, the work-around quoted above is no more functional.
 
 ## Tester with /etc/shadow
 
