@@ -5,8 +5,8 @@ Test windows authentication of a user with multiple password given in a dictiona
 
 ## Requirements
 
-* Python >= 2.7.3
-* Python Pam >= 0.4.2
+* Python 2.7.3
+* Python Pam 0.4.2
 
 ## Tests
 
@@ -26,7 +26,7 @@ Arguments :
 * **dictionary** : Dictionary file path that contains all password to test.
 
 Benchmark :
-* It takes more than **30 minutes** to test a dictionary with 3905 passwords. 
+* It takes more than **1 hour** to test a dictionary with 3905 passwords. 
 
 ## Tester with /etc/shadow
 
