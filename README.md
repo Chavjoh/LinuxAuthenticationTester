@@ -68,7 +68,7 @@ ac
 
 ### Generator
 
-Have a look to the project [DictionaryGeneratorPHP](https://github.com/Chavjoh/DictionaryGeneratorPHP).
+Have a look to the project [DictionaryGeneratorPython](https://github.com/Chavjoh/DictionaryGeneratorPython) or [DictionaryGeneratorPHP](https://github.com/Chavjoh/DictionaryGeneratorPHP).
 
 ## Feedback
 
